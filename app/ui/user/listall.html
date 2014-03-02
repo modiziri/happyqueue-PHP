@@ -1,0 +1,95 @@
+<F3:include href="common/header.html" />
+
+
+	<div class="container">
+		<div class="row">
+			<div class="span7 offset2">
+
+		<F3:check if="{{@has_submit}}">
+			<F3:true>
+			<F3:check if="{{@success}}">
+				<F3:true>
+					<div class="alert alert-success">
+						<button class="close" data-dismiss="alert">&times;</button>
+						<h4 class="alert-heading">加入排队成功！</h4>
+				</F3:true>
+				<F3:false>
+					<div class="alert alert-error">
+						<button class="close" data-dismiss="alert">&times;</button>
+						<h4 class="alert-heading">提示</h4>
+				</F3:false>
+			</F3:check>
+						<p>{{@msg}}</p>
+					</div>
+			</F3:true>
+			<F3:false>
+				<div style="position:relative;zoom:1">
+					<h3>{{@list_title}}</h3>
+					<h4 style="position:absolute; text-align:right; right:0; bottom:0">
+					<a class="btn" href="{{@WEB_ROOT}}user/list">随机排序</a>
+					<a class="btn" href="{{@WEB_ROOT}}user/list?order=people">按排队人数排序</a>
+					<a class="btn" href="{{@WEB_ROOT}}user/list?order=time">按等待时间排序</a>
+				</div>
+			</F3:false>
+		</F3:check>
+
+
+      <F3:check if="{{@has_submit}}">
+      <F3:true>
+        <table class = "table table-hover">
+          <thead>
+            <tr>
+              <th>我的排队信息</th>
+            <tr>
+            <tr>
+              <th>餐厅名</th>
+							<th>当前排队人数</th>
+							<th>排队预估时间</th>
+              <th></th>
+            <tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="{{@WEB_ROOT}}user/show?id={{@myRst.id}}">{{@myRst.name}}</a></td>
+              <td>{{@myRst.num}}</td>
+              <td>{{@myRst.time}}</td>
+              <td><a href="{{@WEB_ROOT}}user/cancel">取消排队</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </F3:true>
+      </F3:check>
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>餐厅名</th>
+							<th>当前排队人数</th>
+							<th>排队预估时间</th>
+						</tr>
+					</thead>
+					<tbody>
+					<F3:repeat group="{{@all}}" value="{{@v}}" counter="{{@c}}">
+						<tr>
+							<td>{{@c}}</td>
+							<td class="name">
+								<a href="{{@WEB_ROOT}}user/show?id={{@v.id}}">{{@v.name}}</a>
+							</td>
+							<td>{{@v.num}}</td>
+							<td>{{@v.time}}</td>
+						</tr>
+					</F3:repeat>
+					</tbody>
+				</table>
+
+<!-- 分页 -->
+{{@pagination}}
+<!-- end of 分页 -->
+
+
+			</div>
+		</div>
+	</div><!-- Container -->
+
+<F3:include href="common/footer.html" />

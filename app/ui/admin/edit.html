@@ -1,0 +1,135 @@
+<F3:include href="common/header.html" />
+
+	<div class="container">
+		<div class="row">
+			<div class="span7 offset2">
+				<form class="form-horizontal" action="" method="post">
+
+					<h3>修改数据</h3>
+
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">型号名称</label>
+						<div class="controls">
+							<input class="input-xlarge" name="dname" type="text" class="span3" maxlength="60" placeholder="请输入型号名称" value="{{@d.dname}}">
+						</div>
+					</div>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">生产厂商</label>
+						<div class="controls">
+							<input class="input-xlarge" name="dvendor" type="text" class="span3" maxlength="60" placeholder="请输入生产厂商" value="{{@d.dvendor}}">
+						</div>
+					</div>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">研制年代(4位数 如:2012 如果未知,请输入0000)</label>
+						<div class="controls">
+							<input name="dtime" type="text" class="span3" maxlength="4" placeholder="请输入研制年代" value="{{@d.dtime}}">
+						</div>
+					</div>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">装备对象</label>
+						<div class="controls">
+							<input class="input-xlarge" name="duser" type="text" class="span3" maxlength="60" placeholder="请输入装备对象" value="{{@d.duser}}">
+						</div>
+					</div>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">现状</label>
+						<div class="controls">
+							<textarea class="input-xlarge" rows="10" name="dstatus">{{@d.dstatus}}</textarea>
+						</div>
+					</div>
+
+					<!-- 大量文本 -->
+					<div class="control-group">
+						<label class="control-label">概述</label>
+						<div class="controls">
+							<textarea class="input-xlarge" rows="20" name="doverview">{{@d.doverview}}</textarea>
+						</div>
+					</div>
+
+					<!-- 单选 
+					<div class="control-group">
+						<label class="control-label">是否可用</label>
+						<div class="controls">
+							<label class="radio inline">
+								<input type="radio" name="status" value="1" checked>
+								可用
+							</label>
+							<label class="radio inline">
+								<input type="radio" name="status" value="0">
+								不可用
+							</label>
+						</div>
+					</div>
+
+					<!-- 多选 -->
+					<div class="control-group">
+						<label class="control-label">检索条件</label>
+						<div class="controls">
+							<label class="checkbox">
+								<input type="checkbox" name="status" value="1" checked>
+								可用
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="status" value="0">
+								不可用
+							</label>
+						</div>
+					</div>
+
+				<!-- 下拉列表 -->
+					<div class="control-group">
+						<label class="control-label">生产厂商</label>
+						<div class="controls">
+							<select  class="input-xlarge" name="">
+				<F3:repeat group="{{@category}}" value="{{@v}}" key="{{@id}}">
+							<option value="{{@id}}">{{@v}}</option>
+				</F3:repeat>
+							</select>
+						</div>
+					</div>
+
+					<!-- 下拉列表 -->
+					<div class="control-group">
+						<label class="control-label">研制年代</label>
+						<div class="controls">
+							<select name="">
+				<F3:repeat group="{{@country}}" value="{{@v}}" key="{{@id}}">
+							<option value="{{@id}}">{{@v}}</option>
+				</F3:repeat>
+							</select>
+						</div>
+					</div>
+
+					-->
+
+					<!-- 提交按扭 -->
+					<div class="form-actions">
+						<div class="controls btn-groups">
+					<F3:check if="{{ @route[1] == 'add' }}">
+						<F3:true>
+							<button type="submit" class="btn btn-primary">添加</button>
+						</F3:true>
+						<F3:false>
+							<button type="submit" class="btn btn-primary">修改</button>
+						</F3:false>
+					</F3:check>
+							<button type="reset" class="btn">重填</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div><!-- Container -->
+
+<F3:include href="common/footer.html" />

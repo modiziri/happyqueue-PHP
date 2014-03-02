@@ -1,0 +1,110 @@
+<F3:include href="common/header.html" />
+
+<script>
+<F3:check if="{{@auto=='true'}}">
+	<F3:true>
+		var a = 1;
+	</F3:true>
+	<F3:false>
+		var a = 0;
+	</F3:false>
+</F3:check>
+
+	$(function(){
+		showTime();
+	});
+
+function myrefresh() {
+	if(a == 1)
+		window.location.reload();
+}
+
+function showTime() {
+	var d = new Date();
+	
+	var h = d.getHours();
+	var m = d.getMinutes();
+	var s = d.getSeconds();
+
+	var hs = h > 9 ? h : "0"+h;
+	var ms = m > 9 ? m : "0"+m;
+	var ss = s > 9 ? s : "0"+s;
+
+	var str = hs+":"+ms+":"+ss;
+
+	$("#time").html(str);
+
+	setTimeout('showTime()',1000);
+}
+setTimeout('myrefresh()',5000); //指定10秒刷新一次
+</script>
+
+	<div class="container">
+		<div class="row">
+			<div class="span7 offset2">
+				<h2>{{@i.name}}</h2>
+				<p>排队人数：<span class="badge badge-info">{{@i.num}}</span>&nbsp;<span class="label" id="time"></span></p>
+
+				<div>
+
+				<div style="float:left">页面刷新方式：</div>
+				<div style="float:left" id="m" class="btn-group" data-toggle="buttons-radio">
+		<F3:check if="{{@auto=='true'}}">
+			<F3:true>
+					<a type="button" class="active btn" href="#">自动</a>
+			</F3:true>
+			<F3:false>
+					<a type="button" class="btn" href="{{@WEB_ROOT}}admin?m=auto">自动</a>
+			</F3:false>
+		</F3:check>
+					<a type="button" class="btn" href="{{@WEB_ROOT}}admin?m=man">手动</a>
+				</div>
+				
+				</div>
+
+				<div style="clear:both">
+				</div>
+
+			<F3:repeat group="{{@all}}" value="{{@p}}">
+			<div id="{{@p.capacity}}">
+				<h3>{{@p.capacity}}人桌</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>排队时间</th>
+							<th>就餐人数</th>
+							<th>手机号码</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					<F3:repeat group="{{@p.customer}}" value="{{@v}}" counter="{{@c}}">
+						<tr>
+							<td>{{@c}}</td>
+							<td>{{@v.time}}</td>
+							<td>{{@v.num}}</td>
+							<td>{{@v.phone}}</td>
+							<td>
+								<a style="{{ @v.status == 'queuing' ? '' : 'display:none'}}" href="{{@WEB_ROOT}}admin/notify?id={{@v.phone}}" class="btn btn-primary">通知</a>
+								<a style="{{ @v.status == 'smsed' ? '' : 'display:none'}}" href="{{@WEB_ROOT}}admin/arrive?id={{@v.phone}}" class="btn btn-success">到达</a>
+							</td>
+						</tr>
+					</F3:repeat>
+					</tbody>
+				</table>
+			</div>
+			<hr/>
+			</F3:repeat>
+
+
+<!-- 分页 -->
+{{@pagination}}
+<!-- end of 分页 -->
+
+
+			</div>
+		</div>
+	</div><!-- Container -->
+
+<F3:include href="common/footer.html" />

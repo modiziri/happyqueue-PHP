@@ -1,0 +1,79 @@
+<F3:include href="common/header.html" />
+
+	<div class="container">
+		<div class="row">
+			<div class="span7 offset2">
+				<form class="form-horizontal" action="" method="post">
+
+					<h3>新用户注册</h3>
+
+		<!--<F3:check if="{{@has_submit}}">-->
+			<!--<F3:check if="{{@success}}">-->
+				<!--<F3:true>-->
+					<!--<div class="alert alert-success" style="display:">-->
+						<!--<button class="close" data-dismiss="alert">&times;</button>-->
+						<!--<h4 class="alert-heading">操作成功！</h4>-->
+				<!--</F3:true>-->
+				<!--<F3:false>-->
+					<!--<div class="alert alert-error">-->
+						<!--<button class="close" data-dismiss="alert">&times;</button>-->
+						<!--<h4 class="alert-heading">操作失败！</h4>-->
+				<!--[></F3:false><]-->
+			<!--</F3:check>-->
+						<!--<p>{{@msg}}</p>-->
+					<!--</div>-->
+		<!--</F3:check>-->
+
+		<F3:check if="{{@has_submit}}">
+					<div class="alert alert-error">
+						<button class="close" data-dismiss="alert">&times;</button>
+						<h4 class="alert-heading">操作失败！</h4>
+						<p>{{@msg}}</p>
+					</div>
+		</F3:check>
+
+					<div class="control-group">
+						<label class="control-label">手机号码</label>
+						<div class="controls">
+							<input value="{{@p.uname}}" name="uphone"  type="text" class="span3" maxlength="12" placeholder="请输入您的手机号码" required>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">密码</label>
+						<div class="controls">
+							<input name="upass" type="password" class="span3" maxlength="32" placeholder="请输入登录密码" required>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">请再输入一次密码</label>
+						<div class="controls">
+							<input name="upass_check" type="password" class="span3" maxlength="32" placeholder="请再次输入登录密码" required>
+						</div>
+					</div>
+
+
+					<div class="control-group">
+						<label class="control-label">用户类型</label>
+						<div class="controls">
+							<select name="ugroup">
+								<option value="2">普通用户</option>
+								<option value="1">管理用户</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-actions">
+						<div class="controls btn-groups">
+							<button type="submit" class="btn btn-primary">提交</button>
+							<button type="reset" class="btn">重填</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div><!-- Container -->
+
+<F3:include href="common/footer.html" />

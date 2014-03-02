@@ -1,0 +1,53 @@
+<F3:include href="common/header.html" />
+
+	<div class="container">
+		<div class="row">
+			<div class="span7 offset2">
+				<form class="form-horizontal" action="" method="post">
+
+					<h3>修改密码</h3>
+
+		<F3:check if="{{@GET.has_submit}}">
+			<F3:check if="{{@GET.success}}">
+				<F3:true>
+					<div class="alert alert-success" style="display:">
+						<button class="close" data-dismiss="alert">&times;</button>
+						<h4 class="alert-heading">操作成功！</h4>
+				</F3:true>
+				<F3:false>
+					<div class="alert alert-error">
+						<button class="close" data-dismiss="alert">&times;</button>
+						<h4 class="alert-heading">操作失败！</h4>
+				</F3:false>
+			</F3:check>
+						<p>{{@GET.msg}}</p>
+					</div>
+		</F3:check>
+
+					<div class="control-group">
+						<label class="control-label">旧密码</label>
+						<div class="controls">
+							<input name="old_pass" type="password" class="span3" maxlength="32" placeholder="请输入旧密码" required>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">新密码</label>
+						<div class="controls">
+							<input name="new_pass" type="password" class="span3" maxlength="32" placeholder="请输入新密码" required>
+						</div>
+					</div>
+
+					<div class="form-actions">
+						<div class="controls btn-groups">
+							<button type="submit" class="btn btn-primary">修改密码</button>
+							<button type="reset" class="btn">重填</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div><!-- Container -->
+
+<F3:include href="common/footer.html" />

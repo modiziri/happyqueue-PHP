@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{@title}}</title>
+	<link type="text/css" rel="stylesheet" href="{{@WEB_ROOT}}static/bootstrap/css/bootstrap.css" />
+
+	<script type="text/javascript" src="{{@WEB_ROOT}}static/bootstrap/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="{{@WEB_ROOT}}static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".dropdown-toggle").dropdown();
+		});
+	</script>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="">HappyQueue</a>
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+					<!--<li class="active"><a href="#">首页</a></li>-->
+					<li><a href="{{@WEB_ROOT}}user/list"><i class="icon-book"></i> 我要排队</a></li>
+					<li><a href="{{@WEB_ROOT}}admin"><i class="icon-user"></i> 餐厅管理</a></li>
+					<li><a href="{{@WEB_ROOT}}about"><i class="icon-tasks"></i> 关于我们</a></li>
+				</ul>
+				<ul class="nav pull-right">
+				<F3:check if="{{@login}}">
+					<F3:true>
+						<li><a href="{{@WEB_ROOT}}logout">注销</a></li>
+					</F3:true>
+					<F3:false>
+						<li><a href="{{@WEB_ROOT}}login">登录</a></li>
+						<li><a href="{{@WEB_ROOT}}signup">注册</a></li>
+					</F3:false>
+				</F3:check>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- content -->
+<div class="container" style="margin-top:90px">
+	<div class='hero-unit'>
+		<h1>排队也快乐！</h1>
+		<p>你还在为排队而烦躁吗？你还在为有人插队而无限苦恼吗？那么你的福音到了！</p>
+		<p>只需下载一个小小的软件，让你从此排队也快乐！</p>
+		<p><a class="btn btn-success btn-large" href="{{@WEB_ROOT}}happy.apk">点此下载</a></p>
+	</div>
+	
+
+</div>
+<!-- content -->
+
+<footer style="width:100%;background: #F1F1F1;margin-top: 10px;padding: 20px 0;position:fixed;bottom:0px">
+	<p style="text-align:center;padding-top:15px;">Copyright 2012&copy; HappyQueue</p>
+</footer>
+
+</body>
+</html>
+

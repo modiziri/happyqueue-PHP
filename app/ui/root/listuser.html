@@ -1,0 +1,45 @@
+<F3:include href="common/header.html" />
+
+
+	<div class="container">
+		<div class="row">
+			<div class="span7 offset2">
+
+				<div style="position:relative;zoom:1">
+					<h3>{{@list_title}}</h3>
+					<h4 style="position:absolute; text-align:right; right:0; bottom:0">
+					<a class="btn btn-inverse" href="{{@WEB_ROOT}}user/list?order=1">随机排序</a>
+					<a class="btn btn-inverse" href="{{@WEB_ROOT}}user/list?ugroup=2">按排队人数排序</a>
+				</div>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>餐厅名</th>
+							<!--<th>所属组</th>-->
+							<th>当前排队人数</th>
+						</tr>
+					</thead>
+					<tbody>
+					<F3:repeat group="{{@all}}" value="{{@v}}" counter="{{@c}}">
+						<tr>
+							<td class="" style="display:none">{{@v.id}}</td>
+							<td>{{@c}}</td>
+							<td class="name">{{@v.name}}</td>
+							<td>{{@v.num}}</td>
+						</tr>
+					</F3:repeat>
+					</tbody>
+				</table>
+
+<!-- 分页 -->
+{{@pagination}}
+<!-- end of 分页 -->
+
+
+			</div>
+		</div>
+	</div><!-- Container -->
+
+<F3:include href="common/footer.html" />

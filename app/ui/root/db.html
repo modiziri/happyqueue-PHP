@@ -1,0 +1,188 @@
+<F3:include href="common/header.html" />
+
+	<script type="text/javascript" src="{{@WEB_ROOT}}static/bootstrap/js/bootstrap-modal.js"></script>
+	<script>
+		$(function(){
+			$(".del-db").click(function(){
+				$("#del-db-modal").modal();
+			})
+			$(".del-all-db").click(function(){
+				$("#del-all-db-modal").modal();
+			})
+			$(".import-db").click(function(){
+				$("#import-db-modal").modal();
+			})
+		})
+	</script>
+
+	<!-- MODAL -->
+
+	<div class="modal hide" id="del-all-db-modal">
+		<form class="form-horizontal" action="db/del" method="post">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>删除数据库</h3>
+			</div>
+			<div class="modal-body">
+				<h1>确定要删除所有数据库吗？</h1>
+				<h1>此操作不可恢复</h1>
+			</div>
+			<div class="modal-body">
+
+				<div class="control-group">
+					<label class="control-label">密码</label>
+					<div class="controls">
+						<input name="upass" type="password" class="span3" maxlength="32" placeholder="请输入密码" required>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<a href="{{@WEB_ROOT}}db" class="btn">取消</a>
+				<button type="submit" class="btn btn-primary">删除所有数据库</button>
+			</div>
+			<input type="hidden" name="all_del" value="true">
+		</form>
+	</div>
+
+	<div class="modal hide" id="del-db-modal">
+		<form class="form-horizontal" action="db/del" method="post">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>删除数据库</h3>
+			</div>
+			<div class="modal-body">
+				<h1>确定要删除当前数据库吗？</h1>
+			</div>
+			<div class="modal-body">
+
+				<div class="control-group">
+					<label class="control-label">密码</label>
+					<div class="controls">
+						<input name="upass" type="password" class="span3" maxlength="32" placeholder="请输入密码" required>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<a href="{{@WEB_ROOT}}db" class="btn">取消</a>
+				<button type="submit" class="btn btn-primary">删除数据库</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal hide" id="del-db-modal">
+		<form class="form-horizontal" action="db/del" method="post">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>删除数据库</h3>
+			</div>
+			<div class="modal-body">
+				<h1>确定要删除当前数据库吗？</h1>
+			</div>
+			<div class="modal-body">
+
+				<div class="control-group">
+					<label class="control-label">密码</label>
+					<div class="controls">
+						<input name="upass" type="password" class="span3" maxlength="32" placeholder="请输入密码" required>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<a href="{{@WEB_ROOT}}db" class="btn">取消</a>
+				<button type="submit" class="btn btn-primary">删除数据库</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal hide" id="import-db-modal">
+		<form class="form-horizontal" action="db/import" method="post" enctype="multipart/form-data">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>导入数据库</h3>
+			</div>
+			<div class="modal-body">
+				<p>请选择你要导入的数据库文件</p>
+			</div>
+			<div class="modal-body">
+
+				<div class="control-group">
+					<label class="control-label">数据库文件:</label>
+					<div class="controls">
+						<input name="sql_file" type="file" class="span3">
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<a href="{{@WEB_ROOT}}db" class="btn">取消</a>
+				<button type="submit" class="btn btn-primary">上传恢复</button>
+			</div>
+		</form>
+	</div>
+	<!-- END OF MODAL -->
+
+	<div class="container">
+		<div class="row">
+			<div class="span7 offset2">
+
+	<F3:check if="{{@GET.has_submit}}">
+		<F3:check if="{{@GET.success}}">
+			<F3:true>
+				<div class="alert alert-success" style="display:">
+					<button class="close" data-dismiss="alert">&times;</button>
+					<h4 class="alert-heading">操作成功！</h4>
+			</F3:true>
+			<F3:false>
+				<div class="alert alert-error">
+					<button class="close" data-dismiss="alert">&times;</button>
+					<h4 class="alert-heading">操作失败！</h4>
+			</F3:false>
+		</F3:check>
+					<p>{{@GET.msg}}</p>
+				</div>
+	</F3:check>
+				<div>
+					<button class="btn btn-large btn-info import-db" href="#">从本地导入</button>
+					<button style="float:right" class="btn btn-inverse del-all-db">删除所有数据库</button>
+				</div>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>数据库版本</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>0</td>
+							<td><strong>当前数据库</strong></td>
+							<td>
+								<button class="btn btn-warning " onclick = "window.location.href='{{@WEB_ROOT}}db/backup'">备份</button>
+								<button class="btn btn-primary " onclick = "window.location.href='{{@WEB_ROOT}}db/export'">导出</button>
+								<button class="btn btn-danger del-db ">删除</button>
+							</td>
+						</tr>
+					<F3:repeat group="{{@db_list}}" value="{{@v}}" counter="{{@c}}">
+						<tr>
+							<td>{{@c}}</td>
+							<td>{{@v}}</td>
+							<td>
+								<button class="btn btn-success " onclick = "window.location.href='{{@WEB_ROOT}}db/recovery?version={{@v}}'">恢复</button>
+								<button class="btn btn-primary " onclick = "window.location.href='{{@WEB_ROOT}}db/export?version={{@v}}'">导出</button>
+								<button class="btn btn-danger " onclick = "window.location.href='{{@WEB_ROOT}}db/del?version={{@v}}'">删除</button>
+							</td>
+						</tr>
+					</F3:repeat>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div><!-- Container -->
+
+<F3:include href="common/footer.html" />

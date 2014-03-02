@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{@title}}</title>
+	<link type="text/css" rel="stylesheet" href="{{@WEB_ROOT}}static/bootstrap/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="{{@WEB_ROOT}}static/css/font-awesome.css" />
+	<link type="text/css" rel="stylesheet" href="{{@WEB_ROOT}}static/css/event.css" />
+
+	<script type="text/javascript" src="{{@WEB_ROOT}}static/bootstrap/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="{{@WEB_ROOT}}static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		});
+	</script>
+
+	<!--[if lte IE 9]>
+	<script type="text/javascript" src="{{@WEB_ROOT}}static/js/html5shiv.js"></script>
+	<![endif]-->
+	<!--[if IE 6]>
+	<link href="{{@WEB_ROOT}}static/bootstrap/css/ie6.min.css" rel="stylesheet">
+	<style>#ie6-bug-aaaa{margin-left:143px}</style>
+	<![endif]-->
+</head>
+<body>
+	<div class="container">
+		<article class="row">
+			<div class="span7 offset2">
+				<form class="well form-horizontal" action="" method="post">
+
+					<h1 class="offset1">Happy&nbsp;&nbsp;Queue</h1>
+
+					<div class="control-group {{@login_status}}">
+						<label class="control-label">用户名</label>
+						<div class="controls">
+							<input name="uname"  type="text" class="span3" placeholder="请输入登录用户名" required>
+						</div>
+					</div>
+
+					<div class="control-group {{@login_status}}">
+						<label class="control-label">密码</label>
+						<div class="controls">
+							<input name="upass" type="password" class="span3" placeholder="请输入登录密码" required>
+							<span class="help-inline" style="display:{{@error_display}}">用户名或密码输入错误</span>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<div id="ie6-bug-aaaa" class="controls btn-groups">
+							<button type="submit" class="btn btn-primary">登录</button>
+							<a href="{{@WEB_ROOT}}signup" class="btn">注册</a>
+						</div>
+					<div>
+				</form>
+			</div>
+		</article>
+	</div><!-- Container -->
+
+	<footer style="width:100%;background: #F1F1F1;margin-top: 10px;padding: 20px 0;position:fixed;bottom:0px">
+		<p style="text-align:center;padding-top:15px;">Copyright 2012&copy; HappyQueue</p>
+	</footer>
+
+</body>
+</html>
+

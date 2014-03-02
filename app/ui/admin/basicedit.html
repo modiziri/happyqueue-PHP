@@ -1,0 +1,151 @@
+<F3:include href="common/header.html" />
+
+<script type="text/javascript">
+	$(function(){
+	});
+
+</script>
+
+	<div class="container">
+		<div class="row">
+			<div class="span10 offset1">
+				<form class="form-horizontal" action="{{@WEB_ROOT}}device/edit/basic" method="post" enctype="multipart/form-data">
+
+					<h3>修改设备基本信息</h3>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">型号名称</label>
+						<div class="controls">
+							<input class="span6" name="dname" type="text"  placeholder="请输入型号名称" value="{{@d.dname}}">
+						</div>
+					</div>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">生产厂商</label>
+						<div class="controls">
+							<input class="span6" name="dvendor" type="text"  placeholder="请输入生产厂商" value="{{@d.dvendor}}">
+						</div>
+					</div>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">研制年代(最早)*</label>
+						<div class="controls">
+							<input name="min_year" type="text" class="span2 inline" maxlength="4" placeholder="最早" value="{{@d.min_year}}">
+						</div>
+					</div>
+
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">研制年代(最晚)*</label>
+						<div class="controls">
+							<input name="max_year" type="text" class="span2 inline" maxlength="4" placeholder="最晚" value="{{@d.max_year}}">
+							<span class="help-block">必须填写4位整数年，如只有一个年份，则“最晚”栏不用填</span>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">年代详情</label>
+						<div class="controls">
+							<textarea class="span6" rows="3" name="comment_year">{{@d.comment_year}}</textarea>
+						</div>
+					</div>
+
+					<div id="1st-category" class="control-group">
+						<label class="control-label">第一分类</label>
+						<div class="controls">
+				<F3:repeat group="{{@c.1st_category}}" value="{{@v}}" key="{{@id}}">
+							<label id="radio-{{@id}}" class="radio inline">
+								<input type="radio" name="1st_category" value="{{@id}}" {{ @id == @d.1st_category ? 'checked' : ''}} >
+								<span>{{@v}}</span>
+							</label>
+				</F3:repeat>
+						</div>
+					</div>
+
+					<div id="2nd-category" class="control-group">
+						<label class="control-label">第二分类</label>
+						<div class="controls">
+				<F3:repeat group="{{@c.2nd_category}}" value="{{@v}}" key="{{@id}}">
+							<label id="radio-{{@id}}" class="radio inline">
+								<input type="radio" name="2nd_category" value="{{@id}}" {{ @id == @d.2nd_category ? 'checked' : ''}} >
+								<span>{{@v}}</span>
+							</label>
+				</F3:repeat>
+						</div>
+					</div>
+
+					<div class="control-group" id="3rd-category">
+						<label class="control-label">第三分类</label>
+						<div class="controls">
+				<F3:repeat group="{{@c.3rd_category}}" value="{{@v}}" key="{{@id}}">
+							<label id="radio-{{@id}}" class="radio inline">
+								<input type="radio" name="3rd_category" value="{{@id}}" {{ @id == @d.3rd_category ? 'checked' : ''}} >
+								<span>{{@v}}</span>
+							</label>
+				</F3:repeat>
+						</div>
+					</div>
+
+					<!-- 下拉列表 -->
+					<div class="control-group">
+						<label class="control-label">研制国家</label>
+						<div class="controls">
+							<select name="dcountry">
+				<F3:repeat group="{{@country}}" value="{{@v}}" key="{{@id}}">
+								<option {{ @id == @d.dcountry ? 'selected' : ''}} value="{{@id}}">{{@v}}</option>
+				</F3:repeat>
+							</select>
+						</div>
+					</div>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">装备对象</label>
+						<div class="controls">
+							<input class="span6" name="duser" type="text"  placeholder="请输入装备对象" value="{{@d.duser}}">
+						</div>
+					</div>
+
+					<!-- 文本框 -->
+					<div class="control-group">
+						<label class="control-label">现状</label>
+						<div class="controls">
+							<textarea class="span6" rows="5" name="dstatus">{{@d.dstatus}}</textarea>
+						</div>
+					</div>
+
+					<!-- 大量文本 -->
+					<div class="control-group">
+						<label class="control-label">概述</label>
+						<div class="controls">
+							<textarea class="span6" rows="5" name="doverview">{{@d.doverview}}</textarea>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">图片</label>
+						<div class="controls">
+							<input name="avatar" type="file">
+						</div>
+					</div>
+
+					<input name="did" type="hidden" value="{{@did}}">
+
+					<!-- 提交按扭 -->
+					<div class="form-actions">
+						<div class="controls btn-groups">
+							<button type="submit" class="btn btn-primary">确定修改</button>
+							<a class="btn" href="{{@WEB_ROOT}}device/detail?did={{@did}}">取消修改</a>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div><!-- Container -->
+
+<F3:include href="common/footer.html" />

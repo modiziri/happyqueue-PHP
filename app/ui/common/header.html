@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{@title}}</title>
+	<link type="text/css" rel="stylesheet" href="{{@WEB_ROOT}}static/bootstrap/css/bootstrap.css" />
+	<!--<link type="text/css" rel="stylesheet" href="{{@WEB_ROOT}}static/css/jquery-ui-custom.css">-->
+
+	<script type="text/javascript" src="{{@WEB_ROOT}}static/bootstrap/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="{{@WEB_ROOT}}static/bootstrap/js/bootstrap.min.js"></script>
+	<!--<script type="text/javascript" src="{{@WEB_ROOT}}static/bootstrap/js/bootstrap-modal.js"></script>-->
+	<!--<script type="text/javascript" src="{{@WEB_ROOT}}static/js/jquery-ui-custom.js"></script>-->
+	<script type="text/javascript">
+		$(function(){
+			$('.dropdown-toggle').dropdown();
+		});
+	</script>
+
+</head>
+<body>
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="{{@WEB_ROOT}}">HappyQueue</a>
+					<ul class="nav">
+						<!--<li {{ @route[0] == '' ? 'class="active"' : ''}}><a href="{{@WEB_ROOT}}"><i class="icon-search"></i> 首页</a></li>-->
+						<li {{ @route == 'user' ? 'class="active"' : '' }}><a href="{{@WEB_ROOT}}user/list"><i class="icon-book"></i> 我要排队</a></li>
+						<li {{ @route == 'admin' ? 'class="active"' : ''}}><a href="{{@WEB_ROOT}}admin"><i class="icon-user"></i> 餐厅管理</a></li>
+						<li {{ @route == 'about' ? 'class="active"' : ''}}><a href="{{@WEB_ROOT}}about"><i class="icon-tasks"></i> 关于我们</a></li>
+					</ul>
+
+					<ul class="nav pull-right">
+				<F3:check if="{{@login}}">
+					<F3:true>
+						<F3:check if="{{@admin}}">
+							<F3:true>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-wrench"></i> 设置<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="{{@WEB_ROOT}}admin/edit"><i class="icon-wrench"></i> 基本信息</a></li>
+									<li><a href="{{@WEB_ROOT}}admin/edit/time"><i class="icon-user"></i> 等待时间</a></li>
+									<!--<li class="divider"></li>-->
+								</ul>
+							</li>
+							</F3:true>
+						</F3:check>
+						<li><a href="{{@WEB_ROOT}}logout">注销</a></li>
+					</F3:true>
+					<F3:false>
+						<li><a href="{{@WEB_ROOT}}login">登录</a></li>
+						<li><a href="{{@WEB_ROOT}}signup">注册</a></li>
+					</F3:false>
+				</F3:check>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+
+	<div id="wrap" style="margin-top:90px">
+
+
